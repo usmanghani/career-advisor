@@ -23,14 +23,17 @@ else
 	var content = fs.open(CrawlerDB, 'r');
 	url = content.readLine();
 	
-	while(!content.atEnd())
-	{
-		fs.write(CrawlerTmp, content.readLine()+"\r\n", 'a');
-	}
-	var tmpData = fs.read(CrawlerTmp);
+	//while(!content.atEnd())
+//	{
+	//	fs.write(CrawlerTmp, content.readLine()+"\r\n", 'a');
+//	}
+	
+	
+	var tmpData = fs.read(CrawlerDB);
+	tmpData = tmpData.split("\n").slice(1).join("\n");
 	fs.write(CrawlerDB, tmpData, 'w');
 	
-	fs.remove(CrawlerTmp);
+	//fs.remove(CrawlerTmp);
 }
 
 
