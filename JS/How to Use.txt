@@ -1,0 +1,5 @@
+Usage: Start_Crawling.bat *
+
+* = a->z ^ 1->26
+
+PhantomJS.exe should be kept in same directory
