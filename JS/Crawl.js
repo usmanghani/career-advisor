@@ -1,11 +1,11 @@
 //console.log('Starting Crawling');
 
-var Error  = false;
+
 var page   = require('webpage').create();
 var system = require('system');
 var fs = require('fs');
 
-
+var Error  = false;
 var CrawlerDB = 'category_'  + system.args[1] + '.txt';
 var DirDB     = 'directory_' + system.args[1] + '.txt';
 var Processed = 'processed_' + system.args[1] + '.txt';
@@ -22,18 +22,11 @@ else
 {
 	var content = fs.open(CrawlerDB, 'r');
 	url = content.readLine();
-	
-	//while(!content.atEnd())
-//	{
-	//	fs.write(CrawlerTmp, content.readLine()+"\r\n", 'a');
-//	}
-	
-	
+
 	var tmpData = fs.read(CrawlerDB);
 	tmpData = tmpData.split("\n").slice(1).join("\n");
 	fs.write(CrawlerDB, tmpData, 'w');
 	
-	//fs.remove(CrawlerTmp);
 }
 
 
@@ -75,7 +68,7 @@ if (url.indexOf("/directory/people")>0)
 			}
 		});
 		
-		if (!Error)
+		if ((link.indexOf("Error")<0) )
 		{
 		
 		 for (var i=0; i<link.length; i++)
@@ -142,13 +135,13 @@ else if (url.indexOf("/dir/")>0)
 			}
 		});
 		
-		if (!Error)
+		if ((link.indexOf("Error")<0) )
 		  for (var i=0; i<link.length; i++)
 		     fs.write(Processed, link[i]+"\r\n", 'a');
 		
 		else
 		   console.log(link);
-		}
+	}
 		
 		
 
