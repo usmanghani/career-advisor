@@ -8,7 +8,8 @@ var arg      = system.args[1];
 var filename = "category_"+arg+".txt"; 
 var ToInsert = "";
 
-for (var i=1; i<=100; i++)
+if (isNaN(arg))
+ for (var i=1; i<=100; i++)
 	for (var j=1; j<=100; j++)
 		for (var k=1; k<=100; k++)
 		{ 
@@ -18,9 +19,20 @@ for (var i=1; i<=100; i++)
 		
 		  ToInsert+= "https://www.linkedin.com/directory/people-"+arg+"-"+tmp_i+"-"+tmp_j+"-"+tmp_k+"/\r\n";
 		}
+
+else
+ for (var i=1; i<=100; i++)
+	for (var j=1; j<=100; j++)
+		{ 
+	      var tmp_i = '' + i;
+		  var tmp_j = '' + j;
 		
-//console.log(ToInsert);		
+		  ToInsert+= "https://www.linkedin.com/directory/people-"+arg+"-"+tmp_i+"-"+tmp_j+"/\r\n";
+		}
+		
 
 fs.write(filename, ToInsert, 'w');
+
+
 
 phantom.exit();  
